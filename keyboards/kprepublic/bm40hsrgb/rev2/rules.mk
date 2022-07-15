@@ -24,3 +24,8 @@ SRC += is31fl3733.c
 QUANTUM_LIB_SRC += i2c_master.c
 
 LAYOUTS_HAS_RGB = yes
+
+# Slim down
+LTO_ENABLE = yes
+SPACE_CADET_ENABLE = no
+GRAVE_ESC_ENABLE = no
