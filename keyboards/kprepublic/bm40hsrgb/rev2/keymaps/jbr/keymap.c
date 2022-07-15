@@ -10,11 +10,18 @@ enum layers {
 #define LOWER OSL(_LOWER)
 #define UPPER OSL(_UPPER)
 
+#define CK_A    LCTL_T(KC_A)
+#define CK_S    LGUI_T(KC_S)
+#define CK_D    LALT_T(KC_D)
+#define CK_K    RALT_T(KC_K)
+#define CK_L    RGUI_T(KC_L)
+#define CK_SCLN RCTL_T(KC_SCLN)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BASE] = LAYOUT_ortho_4x12_1x2uC(
     KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-    KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT ,
+    KC_TAB,  CK_A,    CK_S,    CK_D,    KC_F,    KC_G,    KC_H,    KC_J,    CK_K,    CK_L,    CK_SCLN, KC_ENT ,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
     KC_APP,  KC_LCTL, KC_LGUI, KC_LALT, LOWER,       KC_SPC,       UPPER,   KC_RALT, KC_RGUI, KC_RCTL, KC_APP
 ),
