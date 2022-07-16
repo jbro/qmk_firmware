@@ -54,14 +54,14 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
   switch(get_highest_layer(layer_state|default_layer_state)) {
     case _UPPER:
-      rgb_matrix_set_color(42, RGB_GREEN);
+      rgb_matrix_set_color(42, RGB_PURPLE);
       break;
     case _LOWER:
-      rgb_matrix_set_color(40, RGB_GREEN);
+      rgb_matrix_set_color(40, RGB_SPRINGGREEN);
       break;
     case _CONF:
       for(uint8_t i = led_min; i <= led_max; i++) {
-        rgb_matrix_set_color(i, RGB_RED);
+        rgb_matrix_set_color(i, RGB_ORANGE);
       }
       break;
     default:
