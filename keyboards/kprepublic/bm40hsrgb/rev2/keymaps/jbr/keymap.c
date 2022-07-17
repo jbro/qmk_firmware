@@ -67,12 +67,16 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
   switch(get_highest_layer(layer_state|default_layer_state)) {
     case _LOWER:
+      rgb_matrix_set_color(4, INDICATOR_COLOR);
       rgb_matrix_set_color(40, INDICATOR_COLOR);
       break;
     case _UPPER:
+      rgb_matrix_set_color(7, INDICATOR_COLOR);
       rgb_matrix_set_color(42, INDICATOR_COLOR);
       break;
     case _CONF:
+      rgb_matrix_set_color(4, INDICATOR_COLOR);
+      rgb_matrix_set_color(7, INDICATOR_COLOR);
       rgb_matrix_set_color(40, INDICATOR_COLOR);
       rgb_matrix_set_color(42, INDICATOR_COLOR);
       break;
@@ -82,18 +86,27 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 
   uint8_t mods = get_mods() | get_oneshot_mods();
   if(mods & MOD_MASK_SHIFT) {
+      rgb_matrix_set_color(0, INDICATOR_COLOR);
+      rgb_matrix_set_color(24, INDICATOR_COLOR);
+      rgb_matrix_set_color(35, INDICATOR_COLOR);
+  }
+  if(is_caps_word_on()) {
+      rgb_matrix_set_color(0, INDICATOR_COLOR);
       rgb_matrix_set_color(24, INDICATOR_COLOR);
       rgb_matrix_set_color(35, INDICATOR_COLOR);
   }
   if(mods & MOD_MASK_CTRL) {
+      rgb_matrix_set_color(1, INDICATOR_COLOR);
       rgb_matrix_set_color(37, INDICATOR_COLOR);
       rgb_matrix_set_color(45, INDICATOR_COLOR);
   }
   if(mods & MOD_MASK_ALT) {
+      rgb_matrix_set_color(2, INDICATOR_COLOR);
       rgb_matrix_set_color(38, INDICATOR_COLOR);
       rgb_matrix_set_color(44, INDICATOR_COLOR);
   }
   if(mods & MOD_MASK_GUI) {
+      rgb_matrix_set_color(3, INDICATOR_COLOR);
       rgb_matrix_set_color(39, INDICATOR_COLOR);
       rgb_matrix_set_color(43, INDICATOR_COLOR);
   }
