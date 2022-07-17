@@ -10,20 +10,23 @@ enum layers {
 #define LOWER OSL(_LOWER)
 #define UPPER OSL(_UPPER)
 
-#define CK_A    LCTL_T(KC_A)
-#define CK_S    LGUI_T(KC_S)
-#define CK_D    LALT_T(KC_D)
-#define CK_K    RALT_T(KC_K)
-#define CK_L    RGUI_T(KC_L)
-#define CK_SCLN RCTL_T(KC_SCLN)
+#define CK_LSFT OSM(MOD_LSFT)
+#define CK_RSFT OSM(MOD_RSFT)
+
+#define CK_Z    LCTL_T(KC_Z)
+#define CK_X    LALT_T(KC_X)
+#define CK_C    LGUI_T(KC_C)
+#define CK_COMM RGUI_T(KC_COMM)
+#define CK_DOT  RALT_T(KC_DOT)
+#define CK_SLSH RCTL_T(KC_SLSH)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BASE] = LAYOUT_ortho_4x12_1x2uC(
-    KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-    KC_TAB,  CK_A,    CK_S,    CK_D,    KC_F,    KC_G,    KC_H,    KC_J,    CK_K,    CK_L,    CK_SCLN, KC_ENT ,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-    KC_APP,  KC_LCTL, KC_LGUI, KC_LALT, LOWER,       KC_SPC,       UPPER,   KC_RALT, KC_RGUI, KC_RCTL, KC_APP
+    KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+    KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT ,
+    CK_LSFT, CK_Z,    CK_X,    CK_C,    KC_V,    KC_B,    KC_N,    KC_M,    CK_COMM, CK_DOT,  CK_SLSH, CK_RSFT,
+    KC_APP,  KC_LCTL, KC_LALT, KC_LGUI, LOWER,       KC_SPC,       UPPER,   KC_RGUI, KC_RALT, KC_RCTL, KC_APP
 ),
 
 [_LOWER] = LAYOUT_ortho_4x12_1x2uC(
@@ -40,8 +43,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______,     _______,      _______, _______, _______, _______, _______
 ),
 [_CONF] = LAYOUT_ortho_4x12_1x2uC(
-    QK_BOOT, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   EE_CLR,
-    QK_RBT,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    KC_NO  , KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   EE_CLR,
+    QK_BOOT, QK_RBT,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO
 )
