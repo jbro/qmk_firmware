@@ -92,6 +92,7 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
   }
   if(is_caps_word_on()) {
       rgb_matrix_set_color(0, INDICATOR_COLOR);
+      rgb_matrix_set_color(11, INDICATOR_COLOR);
       rgb_matrix_set_color(24, INDICATOR_COLOR);
       rgb_matrix_set_color(35, INDICATOR_COLOR);
   }
