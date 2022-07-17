@@ -12,6 +12,12 @@ enum layers {
 
 #define CK_LSFT OSM(MOD_LSFT)
 #define CK_RSFT OSM(MOD_RSFT)
+#define CK_LCTL OSM(MOD_LCTL)
+#define CK_LALT OSM(MOD_LALT)
+#define CK_LGUI OSM(MOD_LGUI)
+#define CK_RCTL OSM(MOD_RCTL)
+#define CK_RALT OSM(MOD_RALT)
+#define CK_RGUI OSM(MOD_RGUI)
 
 #define CK_Z    LCTL_T(KC_Z)
 #define CK_X    LALT_T(KC_X)
@@ -26,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT ,
     CK_LSFT, CK_Z,    CK_X,    CK_C,    KC_V,    KC_B,    KC_N,    KC_M,    CK_COMM, CK_DOT,  CK_SLSH, CK_RSFT,
-    KC_APP,  KC_LCTL, KC_LALT, KC_LGUI, LOWER,       KC_SPC,       UPPER,   KC_RGUI, KC_RALT, KC_RCTL, KC_APP
+    KC_APP,  CK_LCTL, CK_LALT, CK_LGUI, LOWER,       KC_SPC,       UPPER,   CK_RGUI, CK_RALT, CK_RCTL, KC_APP
 ),
 
 [_LOWER] = LAYOUT_ortho_4x12_1x2uC(
@@ -54,21 +60,39 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _UPPER, _CONF);
 }
 
+#define INDICATOR_COLOR RGB_PURPLE
 void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
   switch(get_highest_layer(layer_state|default_layer_state)) {
-    case _UPPER:
-      rgb_matrix_set_color(42, RGB_PURPLE);
-      break;
     case _LOWER:
-      rgb_matrix_set_color(40, RGB_SPRINGGREEN);
+      rgb_matrix_set_color(40, INDICATOR_COLOR);
+      break;
+    case _UPPER:
+      rgb_matrix_set_color(42, INDICATOR_COLOR);
       break;
     case _CONF:
-      for(uint8_t i = led_min; i <= led_max; i++) {
-        rgb_matrix_set_color(i, RGB_ORANGE);
-      }
+      rgb_matrix_set_color(40, INDICATOR_COLOR);
+      rgb_matrix_set_color(42, INDICATOR_COLOR);
       break;
     default:
       break;
+  }
+
+  uint8_t mods = get_mods() | get_oneshot_mods();
+  if(mods & MOD_MASK_SHIFT) {
+      rgb_matrix_set_color(24, INDICATOR_COLOR);
+      rgb_matrix_set_color(35, INDICATOR_COLOR);
+  }
+  if(mods & MOD_MASK_CTRL) {
+      rgb_matrix_set_color(37, INDICATOR_COLOR);
+      rgb_matrix_set_color(45, INDICATOR_COLOR);
+  }
+  if(mods & MOD_MASK_ALT) {
+      rgb_matrix_set_color(38, INDICATOR_COLOR);
+      rgb_matrix_set_color(44, INDICATOR_COLOR);
+  }
+  if(mods & MOD_MASK_GUI) {
+      rgb_matrix_set_color(39, INDICATOR_COLOR);
+      rgb_matrix_set_color(43, INDICATOR_COLOR);
   }
 }
 
