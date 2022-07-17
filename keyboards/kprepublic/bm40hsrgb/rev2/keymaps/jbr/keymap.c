@@ -63,7 +63,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _UPPER, _CONF);
 }
 
-#define INDICATOR_COLOR RGB_PURPLE
+#define INDICATOR_COLOR RGB_ORANGE
 void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
   switch(get_highest_layer(layer_state|default_layer_state)) {
     case _LOWER:
