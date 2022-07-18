@@ -24,6 +24,8 @@ enum layers {
 #define CK_X    LALT_T(KC_X)
 #define CK_C    LGUI_T(KC_C)
 #define CK_V    LT(_LOWER, KC_V)
+#define CK_B    LT(_UPPER, KC_B)
+#define CK_N    LT(_UPPER, KC_N)
 #define CK_M    LT(_LOWER, KC_M)
 #define CK_COMM RGUI_T(KC_COMM)
 #define CK_DOT  RALT_T(KC_DOT)
@@ -34,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_BASE] = LAYOUT_ortho_4x12_1x2uC(
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT ,
-    CK_LSFT, CK_Z,    CK_X,    CK_C,    CK_V,    KC_B,    KC_N,    CK_M,    CK_COMM, CK_DOT,  CK_SLSH, CK_RSFT,
+    CK_LSFT, CK_Z,    CK_X,    CK_C,    CK_V,    CK_B,    CK_N,    CK_M,    CK_COMM, CK_DOT,  CK_SLSH, CK_RSFT,
     KC_APP,  CK_LCTL, CK_LALT, CK_LGUI, LOWER,       KC_SPC,       UPPER,   CK_RGUI, CK_RALT, CK_RCTL, KC_APP
 ),
 
